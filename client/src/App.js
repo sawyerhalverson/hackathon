@@ -9,24 +9,16 @@ import About from './pages/About';
 
 
 function App() {
-  let component
-  switch (window.location.pathname){
-    case "/":
-      component = <Home/>
-      break
-    case "/pricing":
-      component = <Pricing/>
-      break
-    case "/about":
-      component = <About/>
-      break
-
-  }
   return (
     <>
     <NavBar/>
     <div className='container'>
-      {component}
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/pricing" element={<Pricing/>}></Route>
+        <Route path="/about" element={<About/>}></Route>
+
+      </Routes>
     </div>
     </>
 
