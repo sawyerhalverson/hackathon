@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter, Routes, Route, Switch} from 'react-router-dom'
@@ -13,6 +14,12 @@ import './index.css';
 
 
 function App() {
+  const [mapOpacity, setMapOpacity] = useState(0.5); // Initial opacity value
+
+  const handleMapOpacityChange = () => {
+    // Change the opacity value when the button is clicked
+    setMapOpacity(1); // Set it to 1 for fully visible
+  };
   return (
     <>
     <NavBar/>
@@ -21,7 +28,9 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/signup" element={<Profile />} /> {/* Updated route for Sign Up */}
-        <Route path="/rides" element={<Rides />} />
+        <Route  path="/rides"
+            element={<Rides handleMapOpacityChange={handleMapOpacityChange} />} />
+        
         <Route path="/map" element={<Map />} />
         <Route path="/pricing" element={<Pricing/>}></Route>
         <Route path="/about" element={<About/>}></Route>

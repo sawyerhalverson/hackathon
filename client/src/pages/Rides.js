@@ -1,5 +1,6 @@
+// Rides.js
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const styles = {
   container: {
@@ -26,26 +27,39 @@ const styles = {
   infoText: {
     fontSize: '1rem',
     marginBottom: '20px',
-  }
+  },
 };
 
 const Rides = () => {
+  const navigate = useNavigate();
+
+  const handleMapOpacityChange = () => {
+    // Navigate to the /map route and change the opacity
+    navigate('/map');
+  };
+
   return (
     <div style={styles.container}>
       <h2 style={styles.header}>Rides</h2>
       <p style={styles.infoText}>Select an option based on your profile:</p>
-      <Link to="/map">
       <div>
-        <button style={styles.button}>Give a Ride</button>
+        <button
+          style={{ ...styles.button, opacity: 1 }} // Always fully visible in this example
+          onClick={() => handleMapOpacityChange()}
+        >
+          Give a Ride
+        </button>
         <p style={styles.infoText}>Ready to offer a ride? Connect with passengers!</p>
       </div>
-      </Link>
-      <Link to="/map">
       <div>
-        <button style={styles.button}>Get a Ride</button>
+        <button
+          style={{ ...styles.button, opacity: 1 }} // Always fully visible in this example
+          onClick={() => handleMapOpacityChange()}
+        >
+          Get a Ride
+        </button>
         <p style={styles.infoText}>Need a ride? Find a driver near you!</p>
       </div>
-      </Link>
     </div>
   );
 };
